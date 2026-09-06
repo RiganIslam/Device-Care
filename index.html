@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DeviceCare — Phone & Tablet Repair</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #050505;
+            color: #ffffff;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Space Grotesk", sans-serif;
+        }
+
+        .lime {
+            color: #d8ff3e;
+        }
+
+        .bg-lime {
+            background: #d8ff3e;
+        }
+
+        .border-lime {
+            border-color: #d8ff3e;
+        }
+
+        .glass {
+            background: rgba(15, 15, 15, 0.78);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+            background-size: 45px 45px;
+        }
+
+        .hero-glow {
+            box-shadow:
+                0 0 80px rgba(216, 255, 62, 0.08),
+                0 0 150px rgba(216, 255, 62, 0.04);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-6px);
+            border-color: rgba(216, 255, 62, 0.45);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+        }
+
+        .phone-frame {
+            border: 7px solid #222;
+            border-radius: 42px;
+            background: linear-gradient(145deg, #171717, #080808);
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.7),
+                inset 0 0 30px rgba(255, 255, 255, 0.025);
+        }
+
+        .phone-screen {
+            border-radius: 30px;
+            background:
+                radial-gradient(circle at 70% 25%, rgba(216,255,62,0.20), transparent 25%),
+                linear-gradient(145deg, #161616, #090909);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: all 0.7s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="fixed top-0 left-0 w-full z-50 glass border-b border-white/10">
+
+        <nav class="max-w-7xl mx-auto px-5 lg:px-8">
+
+            <div class="h-20 flex items-center justify-between">
+
+                <!-- Logo -->
+
+                <a href="index.html" class="flex items-center gap-3">
+
+                    <div
+                        class="w-10 h-10 rounded-xl bg-lime text-black flex items-center justify-center font-bold text-lg"
+                    >
+                        D
+                    </div>
+
+                    <div>
+                        <h1 class="text-lg font-bold tracking-tight">
+                            Device<span class="lime">Care</span>
+                        </h1>
+
+                        <p class="text-[10px] text-gray-500 tracking-[0.2em] uppercase">
+                            Repair Experts
+                        </p>
+                    </div>
+
+                </a>
+
+
+                <!-- Desktop Navigation -->
+
+                <div class="hidden md:flex items-center gap-8 text-sm">
+
+                    <a
+                        href="index.html"
+                        class="text-white hover:text-[#d8ff3e] transition"
+                    >
+                        Home
+                    </a>
+
+                    <a
+                        href="services.html"
+                        class="text-gray-400 hover:text-[#d8ff3e] transition"
+                    >
+                        Services
+                    </a>
+
+                    <a
+                        href="repair.html"
+                        class="text-gray-400 hover:text-[#d8ff3e] transition"
+                    >
+                        Repair
+                    </a>
+
+                    <a
+                        href="accessories.html"
+                        class="text-gray-400 hover:text-[#d8ff3e] transition"
+                    >
+                        Accessories
+                    </a>
+
+                    <a
+                        href="locations.html"
+                        class="text-gray-400 hover:text-[#d8ff3e] transition"
+                    >
+                        Locations
+                    </a>
+
+                    <a
+                        href="about.html"
+                        class="text-gray-400 hover:text-[#d8ff3e] transition"
+                    >
+                        About
+                    </a>
+
+                    <a
+                        href="contact.html"
+                        class="text-gray-400 hover:text-[#d8ff3e] transition"
+                    >
+                        Contact
+                    </a>
+
+                </div>
+
+
+                <!-- Desktop CTA -->
+
+                <a
+                    href="repair.html"
+                    class="hidden md:inline-flex items-center gap-2 bg-lime text-black px-5 py-3 rounded-full font-semibold text-sm hover:bg-white transition"
+                >
+                    Book a Repair
+                    <span>→</span>
+                </a>
+
+
+                <!-- Mobile Menu Button -->
+
+                <button
+                    id="menuBtn"
+                    class="md:hidden w-10 h-10 border border-white/10 rounded-xl flex items-center justify-center"
+                >
+                    ☰
+                </button>
+
+            </div>
+
+
+            <!-- Mobile Menu -->
+
+            <div
+                id="mobileMenu"
+                class="hidden md:hidden pb-6 border-t border-white/10"
+            >
+
+                <div class="flex flex-col gap-5 pt-5 text-sm">
+
+                    <a href="index.html" class="text-white">
+                        Home
+                    </a>
+
+                    <a href="services.html" class="text-gray-400">
+                        Services
+                    </a>
+
+                    <a href="repair.html" class="text-gray-400">
+                        Repair
+                    </a>
+
+                    <a href="accessories.html" class="text-gray-400">
+                        Accessories
+                    </a>
+
+                    <a href="locations.html" class="text-gray-400">
+                        Locations
+                    </a>
+
+                    <a href="about.html" class="text-gray-400">
+                        About
+                    </a>
+
+                    <a href="contact.html" class="text-gray-400">
+                        Contact
+                    </a>
+
+                    <a
+                        href="repair.html"
+                        class="inline-flex justify-center bg-lime text-black px-5 py-3 rounded-full font-semibold"
+                    >
+                        Book a Repair
+                    </a>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <main>
+
+        <section
+            class="relative min-h-screen pt-32 pb-20 flex items-center overflow-hidden grid-bg"
+        >
+
+            <!-- Background glow -->
+
+            <div
+                class="absolute top-40 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-[#d8ff3e]/5 blur-[120px]"
+            ></div>
+
+
+            <div class="max-w-7xl mx-auto px-5 lg:px-8 w-full">
+
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+
+                    <!-- Hero Text -->
+
+                    <div class="reveal">
+
+                        <div
+                            class="inline-flex items-center gap-2 border border-white/10 bg-white/[0.03] rounded-full px-4 py-2 text-xs text-gray-400 mb-7"
+                        >
+
+                            <span class="w-2 h-2 bg-lime rounded-full"></span>
+
+                            Trusted Device Repair Experts
+
+                        </div>
+
+
+                        <h1
+                            class="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[0.95] tracking-tight"
+                        >
+
+                            Your device.
+
+                            <br>
+
+                            <span class="lime">
+                                Our expertise.
+                            </span>
+
+                        </h1>
+
+
+                        <p
+                            class="mt-7 text-gray-400 text-lg leading-8 max-w-xl"
+                        >
+                            Fast, professional phone and tablet repair with
+                            quality parts, transparent pricing, and expert
+                            technicians across the USA.
+                        </p>
+
+
+                        <!-- Buttons -->
+
+                        <div class="flex flex-wrap gap-4 mt-9">
+
+                            <a
+                                href="repair.html"
+                                class="bg-lime text-black px-7 py-4 rounded-full font-bold hover:bg-white transition"
+                            >
+                                Book a Repair →
+                            </a>
+
+                            <a
+                                href="services.html"
+                                class="border border-white/15 px-7 py-4 rounded-full font-semibold hover:border-[#d8ff3e] hover:text-[#d8ff3e] transition"
+                            >
+                                Explore Services
+                            </a>
+
+                        </div>
+
+
+                        <!-- Trust -->
+
+                        <div class="flex flex-wrap gap-8 mt-10 text-sm">
+
+                            <div>
+                                <p class="text-2xl font-bold">50K+</p>
+                                <p class="text-gray-500">Devices Fixed</p>
+                            </div>
+
+                            <div>
+                                <p class="text-2xl font-bold">4.9/5</p>
+                                <p class="text-gray-500">Customer Rating</p>
+                            </div>
+
+                            <div>
+                                <p class="text-2xl font-bold">25+</p>
+                                <p class="text-gray-500">USA Locations</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Phone Visual -->
+
+                    <div class="flex justify-center lg:justify-end reveal">
+
+                        <div class="relative">
+
+                            <!-- Glow -->
+
+                            <div
+                                class="absolute inset-0 bg-[#d8ff3e]/10 blur-[100px]"
+                            ></div>
+
+
+                            <!-- Phone -->
+
+                            <div
+                                class="phone-frame relative w-[270px] sm:w-[310px] h-[550px] sm:h-[620px] p-3 hero-glow"
+                            >
+
+                                <div
+                                    class="phone-screen w-full h-full flex flex-col justify-between p-7 overflow-hidden"
+                                >
+
+                                    <!-- Top -->
+
+                                    <div>
+
+                                        <div
+                                            class="w-24 h-6 bg-black rounded-full mx-auto mb-16"
+                                        ></div>
+
+
+                                        <p
+                                            class="text-xs uppercase tracking-[0.25em] text-gray-500"
+                                        >
+                                            DeviceCare
+                                        </p>
+
+
+                                        <h2
+                                            class="text-4xl font-bold mt-3"
+                                        >
+                                            Fixed.
+                                            <br>
+                                            Fast.
+                                            <br>
+                                            <span class="lime">
+                                                Right.
+                                            </span>
+                                        </h2>
+
+                                    </div>
+
+
+                                    <!-- Bottom -->
+
+                                    <div>
+
+                                        <div
+                                            class="border border-white/10 rounded-2xl p-4 bg-white/[0.03]"
+                                        >
+
+                                            <div class="flex items-center justify-between">
+
+                                                <div>
+
+                                                    <p class="text-xs text-gray-500">
+                                                        Repair Status
+                                                    </p>
+
+                                                    <p class="font-semibold mt-1">
+                                                        Ready for pickup
+                                                    </p>
+
+                                                </div>
+
+                                                <div
+                                                    class="w-10 h-10 rounded-full bg-lime text-black flex items-center justify-center font-bold"
+                                                >
+                                                    ✓
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Floating Card -->
+
+                            <div
+                                class="absolute -left-16 bottom-20 hidden sm:block bg-[#111] border border-white/10 rounded-2xl px-5 py-4 shadow-2xl"
+                            >
+
+                                <div class="flex items-center gap-3">
+
+                                    <div
+                                        class="w-10 h-10 rounded-xl bg-lime text-black flex items-center justify-center font-bold"
+                                    >
+                                        ✓
+                                    </div>
+
+                                    <div>
+
+                                        <p class="text-xs text-gray-500">
+                                            Average repair
+                                        </p>
+
+                                        <p class="font-semibold">
+                                            Same Day
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= SERVICES ================= -->
+
+        <section class="py-24 border-t border-white/5">
+
+            <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 reveal">
+
+                    <div>
+
+                        <p
+                            class="lime text-xs uppercase tracking-[0.25em] font-semibold"
+                        >
+                            What We Fix
+                        </p>
+
+                        <h2 class="text-4xl sm:text-5xl font-bold mt-3">
+                            Repair services
+                        </h2>
+
+                    </div>
+
+                    <a
+                        href="services.html"
+                        class="text-sm text-gray-400 hover:text-[#d8ff3e] transition"
+                    >
+                        View all services →
+                    </a>
+
+                </div>
+
+
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
+
+                    <!-- Card 1 -->
+
+                    <div
+                        class="card-hover reveal border border-white/10 bg-white/[0.025] rounded-3xl p-7"
+                    >
+
+                        <div
+                            class="w-12 h-12 rounded-2xl bg-[#d8ff3e]/10 flex items-center justify-center text-2xl"
+                        >
+                            📱
+                        </div>
+
+                        <h3 class="text-xl font-bold mt-6">
+                            Screen Repair
+                        </h3>
+
+                        <p class="text-gray-500 text-sm leading-6 mt-3">
+                            Cracked or damaged screen? We restore your display
+                            with quality replacement parts.
+                        </p>
+
+                        <a
+                            href="repair.html?service=Screen%20Repair"
+                            class="inline-block mt-6 text-sm lime"
+                        >
+                            Get started →
+                        </a>
+
+                    </div>
+
+
+                    <!-- Card 2 -->
+
+                    <div
+                        class="card-hover reveal border border-white/10 bg-white/[0.025] rounded-3xl p-7"
+                    >
+
+                        <div
+                            class="w-12 h-12 rounded-2xl bg-[#d8ff3e]/10 flex items-center justify-center text-2xl"
+                        >
+                            🔋
+                        </div>
+
+                        <h3 class="text-xl font-bold mt-6">
+                            Battery Replacement
+                        </h3>
+
+                        <p class="text-gray-500 text-sm leading-6 mt-3">
+                            Restore your device's battery performance with a
+                            professional replacement.
+                        </p>
+
+                        <a
+                            href="repair.html?service=Battery%20Replacement"
+                            class="inline-block mt-6 text-sm lime"
+                        >
+                            Get started →
+                        </a>
+
+                    </div>
+
+
+                    <!-- Card 3 -->
+
+                    <div
+                        class="card-hover reveal border border-white/10 bg-white/[0.025] rounded-3xl p-7"
+                    >
+
+                        <div
+                            class="w-12 h-12 rounded-2xl bg-[#d8ff3e]/10 flex items-center justify-center text-2xl"
+                        >
+                            ⚡
+                        </div>
+
+                        <h3 class="text-xl font-bold mt-6">
+                            Charging Port
+                        </h3>
+
+                        <p class="text-gray-500 text-sm leading-6 mt-3">
+                            Having trouble charging? Our technicians can
+                            diagnose and repair charging issues.
+                        </p>
+
+                        <a
+                            href="repair.html?service=Charging%20Port%20Repair"
+                            class="inline-block mt-6 text-sm lime"
+                        >
+                            Get started →
+                        </a>
+
+                    </div>
+
+
+                    <!-- Card 4 -->
+
+                    <div
+                        class="card-hover reveal border border-white/10 bg-white/[0.025] rounded-3xl p-7"
+                    >
+
+                        <div
+                            class="w-12 h-12 rounded-2xl bg-[#d8ff3e]/10 flex items-center justify-center text-2xl"
+                        >
+                            🛠
+                        </div>
+
+                        <h3 class="text-xl font-bold mt-6">
+                            Other Repairs
+                        </h3>
+
+                        <p class="text-gray-500 text-sm leading-6 mt-3">
+                            Camera, liquid damage, speaker and other hardware
+                            problems handled by our experts.
+                        </p>
+
+                        <a
+                            href="repair.html?service=Other%20Issue"
+                            class="inline-block mt-6 text-sm lime"
+                        >
+                            Get started →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= WHY DEVICECARE ================= -->
+
+        <section class="py-24 bg-[#090909] border-y border-white/5">
+
+            <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+                    <div class="reveal">
+
+                        <p
+                            class="lime text-xs uppercase tracking-[0.25em] font-semibold"
+                        >
+                            Why DeviceCare
+                        </p>
+
+                        <h2
+                            class="text-4xl sm:text-5xl font-bold mt-4 leading-tight"
+                        >
+                            Professional repair.
+                            <br>
+                            <span class="text-gray-500">
+                                Without the hassle.
+                            </span>
+                        </h2>
+
+                        <p class="text-gray-400 mt-6 leading-7 max-w-xl">
+                            We make device repair simple. From transparent
+                            pricing to convenient locations, everything is
+                            designed around your experience.
+                        </p>
+
+                    </div>
+
+
+                    <div class="grid sm:grid-cols-2 gap-5 reveal">
+
+                        <div class="border border-white/10 rounded-3xl p-6">
+
+                            <span class="text-2xl">⚙️</span>
+
+                            <h3 class="font-bold text-lg mt-5">
+                                Expert Technicians
+                            </h3>
+
+                            <p class="text-sm text-gray-500 mt-2 leading-6">
+                                Skilled professionals handling your device
+                                carefully.
+                            </p>
+
+                        </div>
+
+
+                        <div class="border border-white/10 rounded-3xl p-6">
+
+                            <span class="text-2xl">💎</span>
+
+                            <h3 class="font-bold text-lg mt-5">
+                                Quality Parts
+                            </h3>
+
+                            <p class="text-sm text-gray-500 mt-2 leading-6">
+                                Reliable replacement parts for long-lasting
+                                repairs.
+                            </p>
+
+                        </div>
+
+
+                        <div class="border border-white/10 rounded-3xl p-6">
+
+                            <span class="text-2xl">💰</span>
+
+                            <h3 class="font-bold text-lg mt-5">
+                                Transparent Pricing
+                            </h3>
+
+                            <p class="text-sm text-gray-500 mt-2 leading-6">
+                                Know what you're paying before the repair
+                                starts.
+                            </p>
+
+                        </div>
+
+
+                        <div class="border border-white/10 rounded-3xl p-6">
+
+                            <span class="text-2xl">📍</span>
+
+                            <h3 class="font-bold text-lg mt-5">
+                                Convenient Locations
+                            </h3>
+
+                            <p class="text-sm text-gray-500 mt-2 leading-6">
+                                Find a DeviceCare store near you.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= LOCATION CTA ================= -->
+
+        <section class="py-24">
+
+            <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+                <div
+                    class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#0d0d0d] p-8 sm:p-12 lg:p-16 reveal"
+                >
+
+                    <div
+                        class="absolute -right-20 -top-20 w-72 h-72 rounded-full bg-[#d8ff3e]/10 blur-[100px]"
+                    ></div>
+
+
+                    <div class="relative z-10 max-w-2xl">
+
+                        <p
+                            class="lime text-xs uppercase tracking-[0.25em] font-semibold"
+                        >
+                            Find a Store
+                        </p>
+
+                        <h2
+                            class="text-4xl sm:text-5xl font-bold mt-4"
+                        >
+                            Need a repair?
+                            <br>
+                            We're close by.
+                        </h2>
+
+                        <p class="text-gray-400 mt-5 leading-7">
+                            Choose a DeviceCare location and book your repair
+                            in just a few steps.
+                        </p>
+
+                        <div class="flex flex-wrap gap-4 mt-8">
+
+                            <a
+                                href="locations.html"
+                                class="bg-lime text-black px-7 py-4 rounded-full font-bold hover:bg-white transition"
+                            >
+                                Find a Location →
+                            </a>
+
+                            <a
+                                href="repair.html"
+                                class="border border-white/15 px-7 py-4 rounded-full font-semibold hover:border-[#d8ff3e] hover:text-[#d8ff3e] transition"
+                            >
+                                Book Now
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="border-t border-white/10 bg-[#030303]">
+
+        <div class="max-w-7xl mx-auto px-5 lg:px-8 py-14">
+
+            <div class="grid md:grid-cols-4 gap-10">
+
+                <!-- Brand -->
+
+                <div class="md:col-span-2">
+
+                    <div class="flex items-center gap-3">
+
+                        <div
+                            class="w-10 h-10 rounded-xl bg-lime text-black flex items-center justify-center font-bold"
+                        >
+                            D
+                        </div>
+
+                        <h2 class="font-bold text-lg">
+                            Device<span class="lime">Care</span>
+                        </h2>
+
+                    </div>
+
+                    <p class="text-gray-500 text-sm leading-6 max-w-md mt-5">
+                        Professional phone and tablet repair services with
+                        convenient locations, quality parts, and expert
+                        technicians.
+                    </p>
+
+                </div>
+
+
+                <!-- Company -->
+
+                <div>
+
+                    <h3 class="font-semibold">
+                        Company
+                    </h3>
+
+                    <div class="flex flex-col gap-3 mt-5 text-sm text-gray-500">
+
+                        <a href="about.html" class="hover:text-[#d8ff3e]">
+                            About
+                        </a>
+
+                        <a href="services.html" class="hover:text-[#d8ff3e]">
+                            Services
+                        </a>
+
+                        <a href="locations.html" class="hover:text-[#d8ff3e]">
+                            Locations
+                        </a>
+
+                        <a href="contact.html" class="hover:text-[#d8ff3e]">
+                            Contact
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Help -->
+
+                <div>
+
+                    <h3 class="font-semibold">
+                        Get Started
+                    </h3>
+
+                    <div class="flex flex-col gap-3 mt-5 text-sm text-gray-500">
+
+                        <a href="repair.html" class="hover:text-[#d8ff3e]">
+                            Book a Repair
+                        </a>
+
+                        <a href="accessories.html" class="hover:text-[#d8ff3e]">
+                            Accessories
+                        </a>
+
+                        <a href="contact.html" class="hover:text-[#d8ff3e]">
+                            Support
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="border-t border-white/10 mt-12 pt-6 flex flex-col sm:flex-row justify-between gap-4 text-xs text-gray-600"
+            >
+
+                <p>
+                    © 2026 DeviceCare. All rights reserved.
+                </p>
+
+                <p>
+                    Built for better device care.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- JavaScript -->
+
+    <script src="/index.js"></script>
+
+</body>
+</html>

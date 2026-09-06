@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>About | DeviceCare</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    * {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: #050505;
+      color: white;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    .lime {
+      color: #d8ff3e;
+    }
+
+    .bg-lime {
+      background: #d8ff3e;
+    }
+
+    .glass {
+      background: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 45px 45px;
+    }
+
+    .value-card {
+      transition: all 0.3s ease;
+    }
+
+    .value-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(216,255,62,0.35);
+    }
+
+    .stat-card {
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.055),
+        rgba(255,255,255,0.015)
+      );
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header id="navbar" class="fixed top-0 left-0 w-full z-50 glass">
+
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+      <a href="index.html" class="flex items-center gap-3">
+
+        <div class="w-10 h-10 rounded-xl bg-lime text-black flex items-center justify-center font-bold text-xl">
+          D
+        </div>
+
+        <div>
+          <h2 class="font-bold text-lg leading-none">
+            DeviceCare
+          </h2>
+
+          <p class="text-xs text-gray-500 mt-1">
+            Repair • Protect • Upgrade
+          </p>
+        </div>
+
+      </a>
+
+
+      <!-- DESKTOP NAV -->
+      <nav class="hidden md:flex items-center gap-8 text-sm text-gray-300">
+
+        <a href="index.html" class="hover:text-white transition">
+          Home
+        </a>
+
+        <a href="services.html" class="hover:text-white transition">
+          Services
+        </a>
+
+        <a href="repair.html" class="hover:text-white transition">
+          Repair
+        </a>
+
+        <a href="accessories.html" class="hover:text-white transition">
+          Accessories
+        </a>
+
+        <a href="locations.html" class="hover:text-white transition">
+          Locations
+        </a>
+
+        <a href="about.html" class="text-white">
+          About
+        </a>
+
+        <a href="contact.html" class="hover:text-white transition">
+          Contact
+        </a>
+
+      </nav>
+
+
+      <a
+        href="repair.html"
+        class="hidden md:inline-flex bg-lime text-black px-5 py-3 rounded-xl font-semibold text-sm hover:scale-105 transition"
+      >
+        Book Repair
+      </a>
+
+
+      <!-- MOBILE BUTTON -->
+      <button
+        id="menuBtn"
+        class="md:hidden text-2xl"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
+    </div>
+
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-white/10">
+
+      <div class="px-6 py-5 flex flex-col gap-5 text-gray-300">
+
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="repair.html">Repair</a>
+        <a href="accessories.html">Accessories</a>
+        <a href="locations.html">Locations</a>
+        <a href="about.html" class="text-white">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a
+          href="repair.html"
+          class="bg-lime text-black px-5 py-3 rounded-xl font-semibold text-center"
+        >
+          Book Repair
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section class="pt-36 pb-24 grid-bg">
+
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="max-w-4xl">
+
+          <div class="inline-flex items-center gap-2 border border-white/10 rounded-full px-4 py-2 text-sm text-gray-400 mb-6">
+
+            <span class="w-2 h-2 bg-lime rounded-full"></span>
+
+            Built around your device
+
+          </div>
+
+
+          <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+
+            We make device
+            <span class="lime">care simple.</span>
+
+          </h1>
+
+
+          <p class="text-gray-400 text-lg md:text-xl mt-7 max-w-3xl leading-relaxed">
+
+            DeviceCare is a modern phone and tablet repair concept
+            focused on making repairs easier, clearer and more
+            convenient for customers.
+
+          </p>
+
+
+          <div class="flex flex-wrap gap-4 mt-9">
+
+            <a
+              href="repair.html"
+              class="bg-lime text-black px-6 py-4 rounded-xl font-bold hover:scale-105 transition"
+            >
+              Book a Repair
+            </a>
+
+            <a
+              href="services.html"
+              class="border border-white/10 px-6 py-4 rounded-xl font-semibold hover:bg-white/5 transition"
+            >
+              Explore Services
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- STORY -->
+    <section class="py-24">
+
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+          <div>
+
+            <p class="lime uppercase tracking-[0.25em] text-xs font-semibold mb-4">
+              Our Story
+            </p>
+
+            <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+              Your device is part of
+              <span class="lime">your everyday life.</span>
+            </h2>
+
+          </div>
+
+
+          <div class="text-gray-400 leading-relaxed space-y-5">
+
+            <p>
+              Phones and tablets have become essential tools for
+              communication, work, entertainment and everyday life.
+              When something goes wrong, getting help shouldn't feel
+              complicated.
+            </p>
+
+            <p>
+              DeviceCare is designed around a straightforward idea:
+              make device repair feel professional, transparent and
+              convenient.
+            </p>
+
+            <p>
+              From choosing a service to selecting a nearby store,
+              every part of the experience is designed to keep things
+              simple.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- STATS -->
+    <section class="py-10">
+
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+
+          <div class="stat-card border border-white/10 rounded-3xl p-7">
+
+            <p
+              class="counter text-4xl md:text-5xl font-bold lime"
+              data-target="8"
+            >
+              0
+            </p>
+
+            <p class="text-gray-500 mt-3">
+              Store locations
+            </p>
+
+          </div>
+
+
+          <div class="stat-card border border-white/10 rounded-3xl p-7">
+
+            <p
+              class="counter text-4xl md:text-5xl font-bold lime"
+              data-target="6"
+            >
+              0
+            </p>
+
+            <p class="text-gray-500 mt-3">
+              Repair services
+            </p>
+
+          </div>
+
+
+          <div class="stat-card border border-white/10 rounded-3xl p-7">
+
+            <p
+              class="counter text-4xl md:text-5xl font-bold lime"
+              data-target="2"
+            >
+              0
+            </p>
+
+            <p class="text-gray-500 mt-3">
+              Device categories
+            </p>
+
+          </div>
+
+
+          <div class="stat-card border border-white/10 rounded-3xl p-7">
+
+            <p
+              class="counter text-4xl md:text-5xl font-bold lime"
+              data-target="100"
+              data-suffix="%"
+            >
+              0
+            </p>
+
+            <p class="text-gray-500 mt-3">
+              Simple experience
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- VALUES -->
+    <section class="py-24">
+
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="max-w-2xl mb-12">
+
+          <p class="lime uppercase tracking-[0.25em] text-xs font-semibold mb-4">
+            What We Believe
+          </p>
+
+          <h2 class="text-4xl md:text-5xl font-bold">
+            Built on a few
+            <span class="lime">simple values.</span>
+          </h2>
+
+        </div>
+
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+
+          <!-- VALUE 1 -->
+          <div class="value-card border border-white/10 rounded-3xl p-7 bg-white/[0.025]">
+
+            <div class="w-12 h-12 rounded-2xl bg-lime/10 flex items-center justify-center text-2xl mb-7">
+              ◈
+            </div>
+
+            <h3 class="text-xl font-bold">
+              Transparency
+            </h3>
+
+            <p class="text-gray-500 text-sm leading-relaxed mt-4">
+              Clear service choices and straightforward information
+              without unnecessary complexity.
+            </p>
+
+          </div>
+
+
+          <!-- VALUE 2 -->
+          <div class="value-card border border-white/10 rounded-3xl p-7 bg-white/[0.025]">
+
+            <div class="w-12 h-12 rounded-2xl bg-lime/10 flex items-center justify-center text-2xl mb-7">
+              ⚡
+            </div>
+
+            <h3 class="text-xl font-bold">
+              Convenience
+            </h3>
+
+            <p class="text-gray-500 text-sm leading-relaxed mt-4">
+              A simple booking process that helps you get from
+              problem to solution faster.
+            </p>
+
+          </div>
+
+
+          <!-- VALUE 3 -->
+          <div class="value-card border border-white/10 rounded-3xl p-7 bg-white/[0.025]">
+
+            <div class="w-12 h-12 rounded-2xl bg-lime/10 flex items-center justify-center text-2xl mb-7">
+              ◉
+            </div>
+
+            <h3 class="text-xl font-bold">
+              Quality
+            </h3>
+
+            <p class="text-gray-500 text-sm leading-relaxed mt-4">
+              Every repair experience should feel organized,
+              professional and customer-focused.
+            </p>
+
+          </div>
+
+
+          <!-- VALUE 4 -->
+          <div class="value-card border border-white/10 rounded-3xl p-7 bg-white/[0.025]">
+
+            <div class="w-12 h-12 rounded-2xl bg-lime/10 flex items-center justify-center text-2xl mb-7">
+              ♢
+            </div>
+
+            <h3 class="text-xl font-bold">
+              Trust
+            </h3>
+
+            <p class="text-gray-500 text-sm leading-relaxed mt-4">
+              We believe customers should always understand what
+              they're booking and why.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PROCESS -->
+    <section class="py-24 border-y border-white/10">
+
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="grid lg:grid-cols-2 gap-16">
+
+          <div>
+
+            <p class="lime uppercase tracking-[0.25em] text-xs font-semibold mb-4">
+              Our Approach
+            </p>
+
+            <h2 class="text-4xl md:text-5xl font-bold">
+              Less confusion.
+              <br>
+              <span class="lime">More solutions.</span>
+            </h2>
+
+          </div>
+
+
+          <div class="space-y-8">
+
+            <div class="flex gap-5">
+
+              <div class="w-10 h-10 shrink-0 rounded-full bg-lime text-black flex items-center justify-center font-bold">
+                01
+              </div>
+
+              <div>
+
+                <h3 class="text-xl font-bold">
+                  Choose your device
+                </h3>
+
+                <p class="text-gray-500 mt-2 leading-relaxed">
+                  Tell us whether you need help with a phone or
+                  tablet.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="flex gap-5">
+
+              <div class="w-10 h-10 shrink-0 rounded-full bg-lime text-black flex items-center justify-center font-bold">
+                02
+              </div>
+
+              <div>
+
+                <h3 class="text-xl font-bold">
+                  Select the service
+                </h3>
+
+                <p class="text-gray-500 mt-2 leading-relaxed">
+                  Pick the repair that best matches your device
+                  problem.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="flex gap-5">
+
+              <div class="w-10 h-10 shrink-0 rounded-full bg-lime text-black flex items-center justify-center font-bold">
+                03
+              </div>
+
+              <div>
+
+                <h3 class="text-xl font-bold">
+                  Pick a location
+                </h3>
+
+                <p class="text-gray-500 mt-2 leading-relaxed">
+                  Find a convenient DeviceCare location and choose
+                  your preferred appointment details.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="py-28">
+
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="rounded-3xl bg-lime text-black p-8 md:p-14">
+
+          <div class="max-w-3xl">
+
+            <p class="uppercase tracking-[0.25em] text-xs font-bold mb-5">
+              Ready when you are
+            </p>
+
+            <h2 class="text-4xl md:text-6xl font-bold leading-tight">
+              Let's get your device
+              back on track.
+            </h2>
+
+            <p class="mt-5 text-black/70 max-w-xl text-lg">
+              Choose your repair service and find a location that
+              works for you.
+            </p>
+
+            <div class="flex flex-wrap gap-4 mt-8">
+
+              <a
+                href="repair.html"
+                class="bg-black text-white px-6 py-4 rounded-xl font-bold hover:scale-105 transition"
+              >
+                Book a Repair
+              </a>
+
+              <a
+                href="locations.html"
+                class="border border-black/20 px-6 py-4 rounded-xl font-semibold hover:bg-black/5 transition"
+              >
+                Find a Location
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 py-12">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="grid md:grid-cols-4 gap-10">
+
+        <div>
+
+          <div class="flex items-center gap-3 mb-4">
+
+            <div class="w-10 h-10 rounded-xl bg-lime text-black flex items-center justify-center font-bold">
+              D
+            </div>
+
+            <h3 class="font-bold text-lg">
+              DeviceCare
+            </h3>
+
+          </div>
+
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Professional phone and tablet repair with quality
+            accessories and a simple customer experience.
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <h4 class="font-semibold mb-4">
+            Explore
+          </h4>
+
+          <div class="flex flex-col gap-3 text-sm text-gray-500">
+
+            <a href="services.html" class="hover:text-white">
+              Services
+            </a>
+
+            <a href="repair.html" class="hover:text-white">
+              Repair
+            </a>
+
+            <a href="accessories.html" class="hover:text-white">
+              Accessories
+            </a>
+
+            <a href="locations.html" class="hover:text-white">
+              Locations
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <h4 class="font-semibold mb-4">
+            Company
+          </h4>
+
+          <div class="flex flex-col gap-3 text-sm text-gray-500">
+
+            <a href="about.html" class="hover:text-white">
+              About
+            </a>
+
+            <a href="contact.html" class="hover:text-white">
+              Contact
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <h4 class="font-semibold mb-4">
+            Need a Repair?
+          </h4>
+
+          <p class="text-gray-500 text-sm mb-4">
+            Start your booking in a few simple steps.
+          </p>
+
+          <a
+            href="repair.html"
+            class="inline-flex bg-lime text-black px-5 py-3 rounded-xl text-sm font-bold"
+          >
+            Book Repair
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="border-t border-white/10 mt-10 pt-6 text-sm text-gray-600">
+        © 2026 DeviceCare. Demo website.
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script src="/about.js"></script>
+
+</body>
+</html>

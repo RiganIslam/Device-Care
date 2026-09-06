@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contact | DeviceCare</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    * {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: #050505;
+      color: white;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    .lime {
+      color: #d8ff3e;
+    }
+
+    .bg-lime {
+      background: #d8ff3e;
+    }
+
+    .glass {
+      background: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 45px 45px;
+    }
+
+    .input {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.10);
+      transition: 0.25s ease;
+    }
+
+    .input:focus {
+      outline: none;
+      border-color: #d8ff3e;
+      box-shadow: 0 0 0 3px rgba(216,255,62,0.08);
+    }
+
+    .contact-card {
+      transition: 0.3s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(216,255,62,0.3);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+    }
+
+    .faq-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header id="navbar" class="fixed top-0 left-0 w-full z-50 glass">
+
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+      <a href="index.html" class="flex items-center gap-3">
+
+        <div class="w-10 h-10 rounded-xl bg-lime text-black flex items-center justify-center font-bold text-xl">
+          D
+        </div>
+
+        <div>
+          <h2 class="font-bold text-lg leading-none">
+            DeviceCare
+          </h2>
+
+          <p class="text-xs text-gray-500 mt-1">
+            Repair • Protect • Upgrade
+          </p>
+        </div>
+
+      </a>
+
+
+      <!-- DESKTOP NAV -->
+      <nav class="hidden md:flex items-center gap-8 text-sm text-gray-300">
+
+        <a href="index.html" class="hover:text-white transition">
+          Home
+        </a>
+
+        <a href="services.html" class="hover:text-white transition">
+          Services
+        </a>
+
+        <a href="repair.html" class="hover:text-white transition">
+          Repair
+        </a>
+
+        <a href="accessories.html" class="hover:text-white transition">
+          Accessories
+        </a>
+
+        <a href="locations.html" class="hover:text-white transition">
+          Locations
+        </a>
+
+        <a href="about.html" class="hover:text-white transition">
+          About
+        </a>
+
+        <a href="contact.html" class="text-white">
+          Contact
+        </a>
+
+      </nav>
+
+
+      <a
+        href="repair.html"
+        class="hidden md:inline-flex bg-lime text-black px-5 py-3 rounded-xl font-semibold text-sm hover:scale-105 transition"
+      >
+        Book Repair
+      </a>
+
+
+      <!-- MOBILE BUTTON -->
+      <button
+        id="menuBtn"
+        class="md:hidden text-2xl"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
+    </div>
+
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-white/10">
+
+      <div class="px-6 py-5 flex flex-col gap-5 text-gray-300">
+
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="repair.html">Repair</a>
+        <a href="accessories.html">Accessories</a>
+        <a href="locations.html">Locations</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="text-white">Contact</a>
+
+        <a
+          href="repair.html"
+          class="bg-lime text-black px-5 py-3 rounded-xl font-semibold text-center"
+        >
+          Book Repair
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section class="pt-36 pb-20 grid-bg">
+
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="max-w-3xl">
+
+          <div class="inline-flex items-center gap-2 border border-white/10 rounded-full px-4 py-2 text-sm text-gray-400 mb-6">
+
+            <span class="w-2 h-2 bg-lime rounded-full"></span>
+
+            We're here to help
+
+          </div>
+
+
+          <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+
+            Let's talk about
+            <span class="lime">your device.</span>
+
+          </h1>
+
+
+          <p class="text-gray-400 text-lg md:text-xl mt-6 leading-relaxed max-w-2xl">
+
+            Have a question about a repair, accessory or location?
+            Send us a message and our team can help point you in the
+            right direction.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTACT SECTION -->
+    <section class="pb-28">
+
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="grid lg:grid-cols-[0.8fr_1.2fr] gap-8">
+
+
+          <!-- CONTACT INFO -->
+          <div class="space-y-5">
+
+            <!-- Email -->
+            <div class="contact-card border border-white/10 rounded-3xl p-7 bg-white/[0.025]">
+
+              <div class="w-12 h-12 rounded-2xl bg-lime/10 flex items-center justify-center text-xl mb-6">
+                @
+              </div>
+
+              <p class="text-xs uppercase tracking-wider text-gray-600">
+                Email
+              </p>
+
+              <h3 class="text-xl font-bold mt-2">
+                hello@devicecare.com
+              </h3>
+
+              <p class="text-gray-500 text-sm mt-3">
+                General questions and support.
+              </p>
+
+            </div>
+
+
+            <!-- Phone -->
+            <div class="contact-card border border-white/10 rounded-3xl p-7 bg-white/[0.025]">
+
+              <div class="w-12 h-12 rounded-2xl bg-lime/10 flex items-center justify-center text-xl mb-6">
+                ☎
+              </div>
+
+              <p class="text-xs uppercase tracking-wider text-gray-600">
+                Phone
+              </p>
+
+              <h3 class="text-xl font-bold mt-2">
+                (800) 555-0148
+              </h3>
+
+              <p class="text-gray-500 text-sm mt-3">
+                Mon – Sat · 9 AM – 7 PM
+              </p>
+
+            </div>
+
+
+            <!-- Locations -->
+            <div class="contact-card border border-white/10 rounded-3xl p-7 bg-white/[0.025]">
+
+              <div class="w-12 h-12 rounded-2xl bg-lime/10 flex items-center justify-center text-xl mb-6">
+                📍
+              </div>
+
+              <p class="text-xs uppercase tracking-wider text-gray-600">
+                Locations
+              </p>
+
+              <h3 class="text-xl font-bold mt-2">
+                Multiple USA locations
+              </h3>
+
+              <a
+                href="locations.html"
+                class="inline-block text-sm lime mt-3 hover:underline"
+              >
+                Find a store →
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <!-- FORM -->
+          <div class="border border-white/10 rounded-3xl p-7 md:p-10 bg-white/[0.025]">
+
+            <div class="mb-8">
+
+              <p class="lime uppercase tracking-[0.25em] text-xs font-semibold mb-3">
+                Send a Message
+              </p>
+
+              <h2 class="text-3xl md:text-4xl font-bold">
+                How can we help?
+              </h2>
+
+              <p class="text-gray-500 mt-3">
+                Fill out the form and we'll get back to you.
+              </p>
+
+            </div>
+
+
+            <form id="contactForm" novalidate>
+
+              <div class="grid md:grid-cols-2 gap-5">
+
+
+                <!-- NAME -->
+                <div>
+
+                  <label class="text-sm text-gray-400">
+                    Full Name
+                  </label>
+
+                  <input
+                    id="name"
+                    type="text"
+                    placeholder="John Doe"
+                    class="input w-full mt-2 rounded-xl px-4 py-3.5 text-white"
+                  >
+
+                  <p
+                    id="nameError"
+                    class="text-red-400 text-xs mt-2 hidden"
+                  >
+                    Please enter your name.
+                  </p>
+
+                </div>
+
+
+                <!-- EMAIL -->
+                <div>
+
+                  <label class="text-sm text-gray-400">
+                    Email
+                  </label>
+
+                  <input
+                    id="email"
+                    type="email"
+                    placeholder="john@example.com"
+                    class="input w-full mt-2 rounded-xl px-4 py-3.5 text-white"
+                  >
+
+                  <p
+                    id="emailError"
+                    class="text-red-400 text-xs mt-2 hidden"
+                  >
+                    Please enter a valid email.
+                  </p>
+
+                </div>
+
+
+                <!-- PHONE -->
+                <div>
+
+                  <label class="text-sm text-gray-400">
+                    Phone
+                  </label>
+
+                  <input
+                    id="phone"
+                    type="tel"
+                    placeholder="(800) 555-0148"
+                    class="input w-full mt-2 rounded-xl px-4 py-3.5 text-white"
+                  >
+
+                </div>
+
+
+                <!-- SUBJECT -->
+                <div>
+
+                  <label class="text-sm text-gray-400">
+                    Subject
+                  </label>
+
+                  <select
+                    id="subject"
+                    class="input w-full mt-2 rounded-xl px-4 py-3.5 text-gray-300"
+                  >
+
+                    <option value="">
+                      Select a topic
+                    </option>
+
+                    <option value="repair">
+                      Repair Question
+                    </option>
+
+                    <option value="accessories">
+                      Accessories
+                    </option>
+
+                    <option value="location">
+                      Store Location
+                    </option>
+
+                    <option value="general">
+                      General Question
+                    </option>
+
+                  </select>
+
+                  <p
+                    id="subjectError"
+                    class="text-red-400 text-xs mt-2 hidden"
+                  >
+                    Please select a topic.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <!-- MESSAGE -->
+              <div class="mt-5">
+
+                <label class="text-sm text-gray-400">
+                  Message
+                </label>
+
+                <textarea
+                  id="message"
+                  rows="6"
+                  placeholder="Tell us how we can help..."
+                  class="input w-full mt-2 rounded-xl px-4 py-4 text-white resize-none"
+                ></textarea>
+
+                <p
+                  id="messageError"
+                  class="text-red-400 text-xs mt-2 hidden"
+                >
+                  Please enter your message.
+                </p>
+
+              </div>
+
+
+              <!-- SUBMIT -->
+              <button
+                type="submit"
+                class="w-full mt-6 bg-lime text-black py-4 rounded-xl font-bold hover:scale-[1.01] transition"
+              >
+                Send Message
+              </button>
+
+
+              <!-- SUCCESS -->
+              <div
+                id="successMessage"
+                class="hidden mt-5 rounded-2xl border border-lime/20 bg-lime/5 p-5"
+              >
+
+                <div class="flex gap-3">
+
+                  <span class="lime text-xl">
+                    ✓
+                  </span>
+
+                  <div>
+
+                    <h3 class="font-bold">
+                      Message sent successfully!
+                    </h3>
+
+                    <p class="text-sm text-gray-500 mt-1">
+                      Thanks for reaching out. This demo form has
+                      received your message.
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="py-24 border-y border-white/10">
+
+      <div class="max-w-4xl mx-auto px-6">
+
+        <div class="text-center mb-12">
+
+          <p class="lime uppercase tracking-[0.25em] text-xs font-semibold mb-4">
+            FAQ
+          </p>
+
+          <h2 class="text-4xl md:text-5xl font-bold">
+            Common questions
+          </h2>
+
+        </div>
+
+
+        <div class="space-y-3">
+
+
+          <!-- FAQ 1 -->
+          <div class="faq-item border border-white/10 rounded-2xl">
+
+            <button
+              class="faq-question w-full flex items-center justify-between text-left p-6"
+            >
+
+              <span class="font-semibold">
+                How do I book a repair?
+              </span>
+
+              <span class="faq-icon text-2xl lime">
+                +
+              </span>
+
+            </button>
+
+            <div class="faq-answer">
+
+              <p class="px-6 pb-6 text-gray-500 leading-relaxed">
+                Go to the Repair page, choose your device, select the
+                service and location, then enter your appointment
+                details.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- FAQ 2 -->
+          <div class="faq-item border border-white/10 rounded-2xl">
+
+            <button
+              class="faq-question w-full flex items-center justify-between text-left p-6"
+            >
+
+              <span class="font-semibold">
+                What devices do you repair?
+              </span>
+
+              <span class="faq-icon text-2xl lime">
+                +
+              </span>
+
+            </button>
+
+            <div class="faq-answer">
+
+              <p class="px-6 pb-6 text-gray-500 leading-relaxed">
+                The website currently supports phone and tablet repair
+                services.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- FAQ 3 -->
+          <div class="faq-item border border-white/10 rounded-2xl">
+
+            <button
+              class="faq-question w-full flex items-center justify-between text-left p-6"
+            >
+
+              <span class="font-semibold">
+                Can I choose a different store?
+              </span>
+
+              <span class="faq-icon text-2xl lime">
+                +
+              </span>
+
+            </button>
+
+            <div class="faq-answer">
+
+              <p class="px-6 pb-6 text-gray-500 leading-relaxed">
+                Yes. Visit the Locations page to search by city,
+                state or ZIP code and choose the store that works
+                best for you.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- FAQ 4 -->
+          <div class="faq-item border border-white/10 rounded-2xl">
+
+            <button
+              class="faq-question w-full flex items-center justify-between text-left p-6"
+            >
+
+              <span class="font-semibold">
+                Can I buy accessories?
+              </span>
+
+              <span class="faq-icon text-2xl lime">
+                +
+              </span>
+
+            </button>
+
+            <div class="faq-answer">
+
+              <p class="px-6 pb-6 text-gray-500 leading-relaxed">
+                Yes. Browse cases, charging products, audio products
+                and protection accessories from the Accessories page.
+              </p>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- FINAL CTA -->
+    <section class="py-28">
+
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="rounded-3xl bg-lime text-black p-8 md:p-14">
+
+          <p class="uppercase tracking-[0.25em] text-xs font-bold">
+            Need help now?
+          </p>
+
+          <h2 class="text-4xl md:text-6xl font-bold mt-4 max-w-3xl">
+            Don't let a broken device slow you down.
+          </h2>
+
+          <div class="flex flex-wrap gap-4 mt-8">
+
+            <a
+              href="repair.html"
+              class="bg-black text-white px-6 py-4 rounded-xl font-bold"
+            >
+              Book a Repair
+            </a>
+
+            <a
+              href="locations.html"
+              class="border border-black/20 px-6 py-4 rounded-xl font-semibold"
+            >
+              Find a Location
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 py-12">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="grid md:grid-cols-4 gap-10">
+
+        <div>
+
+          <div class="flex items-center gap-3 mb-4">
+
+            <div class="w-10 h-10 rounded-xl bg-lime text-black flex items-center justify-center font-bold">
+              D
+            </div>
+
+            <h3 class="font-bold text-lg">
+              DeviceCare
+            </h3>
+
+          </div>
+
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Professional phone and tablet repair with quality
+            accessories and a simple customer experience.
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <h4 class="font-semibold mb-4">
+            Explore
+          </h4>
+
+          <div class="flex flex-col gap-3 text-sm text-gray-500">
+
+            <a href="services.html" class="hover:text-white">
+              Services
+            </a>
+
+            <a href="repair.html" class="hover:text-white">
+              Repair
+            </a>
+
+            <a href="accessories.html" class="hover:text-white">
+              Accessories
+            </a>
+
+            <a href="locations.html" class="hover:text-white">
+              Locations
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <h4 class="font-semibold mb-4">
+            Company
+          </h4>
+
+          <div class="flex flex-col gap-3 text-sm text-gray-500">
+
+            <a href="about.html" class="hover:text-white">
+              About
+            </a>
+
+            <a href="contact.html" class="hover:text-white">
+              Contact
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <h4 class="font-semibold mb-4">
+            Repair
+          </h4>
+
+          <p class="text-gray-500 text-sm mb-4">
+            Need your device fixed?
+          </p>
+
+          <a
+            href="repair.html"
+            class="inline-flex bg-lime text-black px-5 py-3 rounded-xl text-sm font-bold"
+          >
+            Book Repair
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="border-t border-white/10 mt-10 pt-6 text-sm text-gray-600">
+        © 2026 DeviceCare. Demo website.
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script src="/contact.js"></script>
+
+</body>
+</html>

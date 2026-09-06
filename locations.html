@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Locations | DeviceCare</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    * {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: #050505;
+      color: white;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    .lime {
+      color: #d8ff3e;
+    }
+
+    .bg-lime {
+      background: #d8ff3e;
+    }
+
+    .glass {
+      background: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 45px 45px;
+    }
+
+    .location-card {
+      transition: all 0.3s ease;
+    }
+
+    .location-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(216,255,62,0.45);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+
+    .search-box:focus {
+      border-color: #d8ff3e;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(216,255,62,0.08);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header id="navbar" class="fixed top-0 left-0 w-full z-50 glass">
+
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-lime text-black flex items-center justify-center font-bold text-xl">
+          D
+        </div>
+
+        <div>
+          <h2 class="font-bold text-lg leading-none">DeviceCare</h2>
+          <p class="text-xs text-gray-500 mt-1">Repair • Protect • Upgrade</p>
+        </div>
+      </a>
+
+
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex items-center gap-8 text-sm text-gray-300">
+
+        <a href="index.html" class="hover:text-white transition">
+          Home
+        </a>
+
+        <a href="services.html" class="hover:text-white transition">
+          Services
+        </a>
+
+        <a href="repair.html" class="hover:text-white transition">
+          Repair
+        </a>
+
+        <a href="accessories.html" class="hover:text-white transition">
+          Accessories
+        </a>
+
+        <a href="locations.html" class="text-white">
+          Locations
+        </a>
+
+        <a href="about.html" class="hover:text-white transition">
+          About
+        </a>
+
+        <a href="contact.html" class="hover:text-white transition">
+          Contact
+        </a>
+
+      </nav>
+
+
+      <a
+        href="repair.html"
+        class="hidden md:inline-flex bg-lime text-black px-5 py-3 rounded-xl font-semibold text-sm hover:scale-105 transition"
+      >
+        Book Repair
+      </a>
+
+
+      <!-- Mobile Button -->
+      <button
+        id="menuBtn"
+        class="md:hidden text-2xl"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
+    </div>
+
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-white/10">
+
+      <div class="px-6 py-5 flex flex-col gap-5 text-gray-300">
+
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="repair.html">Repair</a>
+        <a href="accessories.html">Accessories</a>
+        <a href="locations.html" class="text-white">Locations</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a
+          href="repair.html"
+          class="bg-lime text-black px-5 py-3 rounded-xl font-semibold text-center"
+        >
+          Book Repair
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section class="pt-36 pb-20 grid-bg">
+
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="max-w-3xl">
+
+          <div class="inline-flex items-center gap-2 border border-white/10 rounded-full px-4 py-2 text-sm text-gray-400 mb-6">
+            <span class="w-2 h-2 bg-lime rounded-full"></span>
+            Multiple locations across the USA
+          </div>
+
+          <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+            Find a
+            <span class="lime">DeviceCare</span>
+            near you.
+          </h1>
+
+          <p class="text-gray-400 text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
+            Choose the location that's most convenient for you and
+            book your device repair in just a few clicks.
+          </p>
+
+        </div>
+
+
+        <!-- SEARCH -->
+        <div class="mt-12 grid md:grid-cols-[1fr_220px] gap-4 max-w-4xl">
+
+          <div class="relative">
+
+            <span class="absolute left-5 top-1/2 -translate-y-1/2 text-gray-500 text-xl">
+              ⌕
+            </span>
+
+            <input
+              id="locationSearch"
+              type="text"
+              placeholder="Search city, state or ZIP code..."
+              class="search-box w-full bg-white/[0.04] border border-white/10 rounded-2xl px-14 py-5 text-white placeholder-gray-500 transition"
+            />
+
+          </div>
+
+
+          <select
+            id="stateFilter"
+            class="bg-white/[0.04] border border-white/10 rounded-2xl px-5 py-5 text-gray-300 search-box"
+          >
+            <option value="all">All States</option>
+          </select>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- STATS -->
+    <section class="pb-16">
+
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+
+          <div class="border border-white/10 rounded-2xl p-6 bg-white/[0.025]">
+            <p class="text-3xl font-bold lime">08</p>
+            <p class="text-gray-500 mt-2 text-sm">Store locations</p>
+          </div>
+
+          <div class="border border-white/10 rounded-2xl p-6 bg-white/[0.025]">
+            <p class="text-3xl font-bold lime">02</p>
+            <p class="text-gray-500 mt-2 text-sm">Device categories</p>
+          </div>
+
+          <div class="border border-white/10 rounded-2xl p-6 bg-white/[0.025]">
+            <p class="text-3xl font-bold lime">06</p>
+            <p class="text-gray-500 mt-2 text-sm">Repair services</p>
+          </div>
+
+          <div class="border border-white/10 rounded-2xl p-6 bg-white/[0.025]">
+            <p class="text-3xl font-bold lime">1</p>
+            <p class="text-gray-500 mt-2 text-sm">Simple booking flow</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- LOCATIONS -->
+    <section class="pb-28">
+
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-8">
+
+          <div>
+
+            <p class="lime uppercase tracking-[0.25em] text-xs font-semibold mb-3">
+              Our Stores
+            </p>
+
+            <h2 class="text-3xl md:text-4xl font-bold">
+              Choose your location
+            </h2>
+
+          </div>
+
+
+          <p
+            id="locationCount"
+            class="text-sm text-gray-500"
+          >
+            8 locations found
+          </p>
+
+        </div>
+
+
+        <!-- LOCATION GRID -->
+        <div
+          id="locationGrid"
+          class="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
+        >
+        </div>
+
+
+        <!-- EMPTY -->
+        <div
+          id="emptyLocations"
+          class="hidden text-center py-20 border border-white/10 rounded-3xl"
+        >
+
+          <div class="text-5xl mb-5">
+            📍
+          </div>
+
+          <h3 class="text-2xl font-bold">
+            No location found
+          </h3>
+
+          <p class="text-gray-500 mt-2">
+            Try another city, state or ZIP code.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CUSTOM LOCATION CTA -->
+    <section class="pb-28">
+
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-8 md:p-12 relative overflow-hidden">
+
+          <div class="absolute -right-20 -top-20 w-72 h-72 bg-lime/10 blur-3xl rounded-full"></div>
+
+          <div class="relative max-w-2xl">
+
+            <p class="lime uppercase tracking-[0.25em] text-xs font-semibold mb-4">
+              Can't find your city?
+            </p>
+
+            <h2 class="text-3xl md:text-5xl font-bold">
+              Need DeviceCare in another location?
+            </h2>
+
+            <p class="text-gray-400 mt-5 leading-relaxed">
+              Contact our team and let us know which city you'd like
+              DeviceCare to serve next.
+            </p>
+
+            <a
+              href="contact.html"
+              class="inline-flex mt-8 bg-lime text-black px-6 py-4 rounded-xl font-bold hover:scale-105 transition"
+            >
+              Contact Us
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 py-12">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="grid md:grid-cols-4 gap-10">
+
+        <div>
+
+          <div class="flex items-center gap-3 mb-4">
+
+            <div class="w-10 h-10 rounded-xl bg-lime text-black flex items-center justify-center font-bold">
+              D
+            </div>
+
+            <h3 class="font-bold text-lg">
+              DeviceCare
+            </h3>
+
+          </div>
+
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Professional phone and tablet repair with quality
+            accessories and a simple customer experience.
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <h4 class="font-semibold mb-4">
+            Explore
+          </h4>
+
+          <div class="flex flex-col gap-3 text-sm text-gray-500">
+
+            <a href="services.html" class="hover:text-white">Services</a>
+            <a href="repair.html" class="hover:text-white">Repair</a>
+            <a href="accessories.html" class="hover:text-white">Accessories</a>
+            <a href="locations.html" class="hover:text-white">Locations</a>
+
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <h4 class="font-semibold mb-4">
+            Company
+          </h4>
+
+          <div class="flex flex-col gap-3 text-sm text-gray-500">
+
+            <a href="about.html" class="hover:text-white">About</a>
+            <a href="contact.html" class="hover:text-white">Contact</a>
+
+          </div>
+
+        </div>
+
+
+        <div>
+
+          <h4 class="font-semibold mb-4">
+            Repair
+          </h4>
+
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">
+            Need your device fixed?
+          </p>
+
+          <a
+            href="repair.html"
+            class="inline-flex bg-lime text-black px-5 py-3 rounded-xl text-sm font-bold"
+          >
+            Book Repair
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="border-t border-white/10 mt-10 pt-6 text-sm text-gray-600">
+        © 2026 DeviceCare. Demo website.
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script src="/locations.js"></script>
+
+</body>
+</html>

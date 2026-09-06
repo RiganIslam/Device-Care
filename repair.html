@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book a Repair — DeviceCare</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #050505;
+            color: white;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: "Space Grotesk", sans-serif;
+        }
+
+        .lime {
+            color: #d8ff3e;
+        }
+
+        .bg-lime {
+            background: #d8ff3e;
+        }
+
+        .glass {
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(18px);
+        }
+
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+            background-size: 45px 45px;
+        }
+
+        .option-card {
+            transition: 0.25s ease;
+        }
+
+        .option-card:hover {
+            border-color: rgba(216,255,62,0.45);
+            transform: translateY(-3px);
+        }
+
+        .option-card.selected {
+            border-color: #d8ff3e;
+            background: rgba(216,255,62,0.07);
+            box-shadow: 0 0 0 1px rgba(216,255,62,0.15);
+        }
+
+        .step-circle {
+            transition: 0.25s ease;
+        }
+
+        .step.active .step-circle {
+            background: #d8ff3e;
+            color: #050505;
+            border-color: #d8ff3e;
+        }
+
+        .step.completed .step-circle {
+            background: #d8ff3e;
+            color: #050505;
+            border-color: #d8ff3e;
+        }
+
+        input,
+        textarea {
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #d8ff3e !important;
+            box-shadow: 0 0 0 3px rgba(216,255,62,0.06);
+        }
+
+        .booking-step {
+            display: none;
+        }
+
+        .booking-step.active {
+            display: block;
+        }
+
+        .summary-card {
+            position: sticky;
+            top: 110px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="fixed top-0 left-0 w-full z-50 glass border-b border-white/10">
+
+        <nav class="max-w-7xl mx-auto px-5 lg:px-8">
+
+            <div class="h-20 flex items-center justify-between">
+
+                <!-- Logo -->
+
+                <a href="index.html" class="flex items-center gap-3">
+
+                    <div
+                        class="w-10 h-10 rounded-xl bg-lime text-black flex items-center justify-center font-bold"
+                    >
+                        D
+                    </div>
+
+                    <div>
+
+                        <h1 class="text-lg font-bold">
+                            Device<span class="lime">Care</span>
+                        </h1>
+
+                        <p class="text-[10px] text-gray-500 tracking-[0.2em] uppercase">
+                            Repair Experts
+                        </p>
+
+                    </div>
+
+                </a>
+
+
+                <!-- Desktop Navigation -->
+
+                <div class="hidden md:flex items-center gap-8 text-sm">
+
+                    <a
+                        href="index.html"
+                        class="text-gray-400 hover:text-[#d8ff3e] transition"
+                    >
+                        Home
+                    </a>
+
+                    <a
+                        href="services.html"
+                        class="text-gray-400 hover:text-[#d8ff3e] transition"
+                    >
+                        Services
+                    </a>
+
+                    <a
+                        href="repair.html"
+                        class="text-white"
+                    >
+                        Repair
+                    </a>
+
+                    <a
+                        href="accessories.html"
+                        class="text-gray-400 hover:text-[#d8ff3e] transition"
+                    >
+                        Accessories
+                    </a>
+
+                    <a
+                        href="locations.html"
+                        class="text-gray-400 hover:text-[#d8ff3e] transition"
+                    >
+                        Locations
+                    </a>
+
+                    <a
+                        href="about.html"
+                        class="text-gray-400 hover:text-[#d8ff3e] transition"
+                    >
+                        About
+                    </a>
+
+                    <a
+                        href="contact.html"
+                        class="text-gray-400 hover:text-[#d8ff3e] transition"
+                    >
+                        Contact
+                    </a>
+
+                </div>
+
+
+                <!-- CTA -->
+
+                <a
+                    href="repair.html"
+                    class="hidden md:inline-flex bg-lime text-black px-5 py-3 rounded-full font-semibold text-sm"
+                >
+                    Book a Repair →
+                </a>
+
+
+                <!-- Mobile Button -->
+
+                <button
+                    id="menuBtn"
+                    class="md:hidden w-10 h-10 border border-white/10 rounded-xl"
+                >
+                    ☰
+                </button>
+
+            </div>
+
+
+            <!-- Mobile Menu -->
+
+            <div
+                id="mobileMenu"
+                class="hidden md:hidden pb-6 border-t border-white/10"
+            >
+
+                <div class="flex flex-col gap-5 pt-5 text-sm">
+
+                    <a href="index.html" class="text-gray-400">
+                        Home
+                    </a>
+
+                    <a href="services.html" class="text-gray-400">
+                        Services
+                    </a>
+
+                    <a href="repair.html" class="text-white">
+                        Repair
+                    </a>
+
+                    <a href="accessories.html" class="text-gray-400">
+                        Accessories
+                    </a>
+
+                    <a href="locations.html" class="text-gray-400">
+                        Locations
+                    </a>
+
+                    <a href="about.html" class="text-gray-400">
+                        About
+                    </a>
+
+                    <a href="contact.html" class="text-gray-400">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="pt-32 pb-20 grid-bg">
+
+        <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+
+            <!-- PAGE HEADER -->
+
+            <div class="max-w-3xl mb-12">
+
+                <p class="lime text-xs uppercase tracking-[0.25em] font-semibold">
+                    Repair Booking
+                </p>
+
+                <h1 class="text-5xl sm:text-6xl font-bold mt-4 leading-tight">
+                    Let's get your
+                    <br>
+                    <span class="text-gray-500">
+                        device back in action.
+                    </span>
+                </h1>
+
+                <p class="text-gray-400 text-lg leading-8 mt-5">
+                    Select your device, choose a repair, pick a location and
+                    schedule your visit.
+                </p>
+
+            </div>
+
+
+
+            <!-- ================= PROGRESS ================= -->
+
+            <div class="border border-white/10 bg-[#0b0b0b] rounded-3xl p-5 sm:p-7 mb-8">
+
+                <div class="grid grid-cols-4 gap-2">
+
+                    <!-- Step 1 -->
+
+                    <div
+                        class="step active flex items-center gap-3"
+                        data-step-indicator="1"
+                    >
+
+                        <div
+                            class="step-circle w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-sm font-bold shrink-0"
+                        >
+                            1
+                        </div>
+
+                        <div class="hidden sm:block">
+
+                            <p class="text-[10px] text-gray-500 uppercase tracking-wider">
+                                Step 01
+                            </p>
+
+                            <p class="text-sm font-semibold">
+                                Device
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Step 2 -->
+
+                    <div
+                        class="step flex items-center gap-3"
+                        data-step-indicator="2"
+                    >
+
+                        <div
+                            class="step-circle w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-sm font-bold shrink-0"
+                        >
+                            2
+                        </div>
+
+                        <div class="hidden sm:block">
+
+                            <p class="text-[10px] text-gray-500 uppercase tracking-wider">
+                                Step 02
+                            </p>
+
+                            <p class="text-sm font-semibold">
+                                Repair
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Step 3 -->
+
+                    <div
+                        class="step flex items-center gap-3"
+                        data-step-indicator="3"
+                    >
+
+                        <div
+                            class="step-circle w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-sm font-bold shrink-0"
+                        >
+                            3
+                        </div>
+
+                        <div class="hidden sm:block">
+
+                            <p class="text-[10px] text-gray-500 uppercase tracking-wider">
+                                Step 03
+                            </p>
+
+                            <p class="text-sm font-semibold">
+                                Location
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Step 4 -->
+
+                    <div
+                        class="step flex items-center gap-3"
+                        data-step-indicator="4"
+                    >
+
+                        <div
+                            class="step-circle w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-sm font-bold shrink-0"
+                        >
+                            4
+                        </div>
+
+                        <div class="hidden sm:block">
+
+                            <p class="text-[10px] text-gray-500 uppercase tracking-wider">
+                                Step 04
+                            </p>
+
+                            <p class="text-sm font-semibold">
+                                Details
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= CONTENT ================= -->
+
+            <div class="grid lg:grid-cols-[1fr_350px] gap-8">
+
+
+                <!-- LEFT SIDE -->
+
+                <div class="border border-white/10 bg-[#0b0b0b] rounded-3xl p-6 sm:p-8">
+
+
+                    <!-- STEP 1 -->
+
+                    <div
+                        id="step1"
+                        class="booking-step active"
+                    >
+
+                        <div class="mb-8">
+
+                            <p class="lime text-xs uppercase tracking-[0.2em] font-semibold">
+                                Step 01
+                            </p>
+
+                            <h2 class="text-3xl font-bold mt-3">
+                                What device needs repair?
+                            </h2>
+
+                            <p class="text-gray-500 mt-2">
+                                Choose your device type.
+                            </p>
+
+                        </div>
+
+
+                        <div class="grid sm:grid-cols-2 gap-5">
+
+
+                            <!-- Phone -->
+
+                            <button
+                                type="button"
+                                class="option-card device-option text-left border border-white/10 rounded-3xl p-7"
+                                data-device="Phone"
+                            >
+
+                                <div class="text-4xl">
+                                    📱
+                                </div>
+
+                                <h3 class="text-xl font-bold mt-6">
+                                    Phone
+                                </h3>
+
+                                <p class="text-gray-500 text-sm mt-2">
+                                    iPhone, Samsung, Google Pixel and more.
+                                </p>
+
+                                <div class="mt-6 text-sm lime">
+                                    Select Phone →
+                                </div>
+
+                            </button>
+
+
+                            <!-- Tablet -->
+
+                            <button
+                                type="button"
+                                class="option-card device-option text-left border border-white/10 rounded-3xl p-7"
+                                data-device="Tablet"
+                            >
+
+                                <div class="text-4xl">
+                                    📲
+                                </div>
+
+                                <h3 class="text-xl font-bold mt-6">
+                                    Tablet
+                                </h3>
+
+                                <p class="text-gray-500 text-sm mt-2">
+                                    iPad, Galaxy Tab and other tablets.
+                                </p>
+
+                                <div class="mt-6 text-sm lime">
+                                    Select Tablet →
+                                </div>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STEP 2 -->
+
+                    <div
+                        id="step2"
+                        class="booking-step"
+                    >
+
+                        <div class="mb-8">
+
+                            <p class="lime text-xs uppercase tracking-[0.2em] font-semibold">
+                                Step 02
+                            </p>
+
+                            <h2 class="text-3xl font-bold mt-3">
+                                What needs fixing?
+                            </h2>
+
+                            <p class="text-gray-500 mt-2">
+                                Select the repair service you need.
+                            </p>
+
+                        </div>
+
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+
+
+                            <button
+                                type="button"
+                                class="option-card service-option text-left border border-white/10 rounded-2xl p-5"
+                                data-service="Screen Repair"
+                            >
+
+                                <span class="text-2xl">
+                                    📱
+                                </span>
+
+                                <h3 class="font-bold mt-4">
+                                    Screen Repair
+                                </h3>
+
+                                <p class="text-gray-500 text-xs mt-2">
+                                    Cracked or damaged display
+                                </p>
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="option-card service-option text-left border border-white/10 rounded-2xl p-5"
+                                data-service="Battery Replacement"
+                            >
+
+                                <span class="text-2xl">
+                                    🔋
+                                </span>
+
+                                <h3 class="font-bold mt-4">
+                                    Battery Replacement
+                                </h3>
+
+                                <p class="text-gray-500 text-xs mt-2">
+                                    Poor battery performance
+                                </p>
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="option-card service-option text-left border border-white/10 rounded-2xl p-5"
+                                data-service="Charging Port Repair"
+                            >
+
+                                <span class="text-2xl">
+                                    ⚡
+                                </span>
+
+                                <h3 class="font-bold mt-4">
+                                    Charging Port
+                                </h3>
+
+                                <p class="text-gray-500 text-xs mt-2">
+                                    Charging or connection issues
+                                </p>
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="option-card service-option text-left border border-white/10 rounded-2xl p-5"
+                                data-service="Camera Repair"
+                            >
+
+                                <span class="text-2xl">
+                                    📷
+                                </span>
+
+                                <h3 class="font-bold mt-4">
+                                    Camera Repair
+                                </h3>
+
+                                <p class="text-gray-500 text-xs mt-2">
+                                    Camera or lens problems
+                                </p>
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="option-card service-option text-left border border-white/10 rounded-2xl p-5"
+                                data-service="Liquid Damage"
+                            >
+
+                                <span class="text-2xl">
+                                    💧
+                                </span>
+
+                                <h3 class="font-bold mt-4">
+                                    Liquid Damage
+                                </h3>
+
+                                <p class="text-gray-500 text-xs mt-2">
+                                    Device exposed to liquid
+                                </p>
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="option-card service-option text-left border border-white/10 rounded-2xl p-5"
+                                data-service="Other Issue"
+                            >
+
+                                <span class="text-2xl">
+                                    🛠️
+                                </span>
+
+                                <h3 class="font-bold mt-4">
+                                    Other Issue
+                                </h3>
+
+                                <p class="text-gray-500 text-xs mt-2">
+                                    Something else is wrong
+                                </p>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STEP 3 -->
+
+                    <div
+                        id="step3"
+                        class="booking-step"
+                    >
+
+                        <div class="mb-8">
+
+                            <p class="lime text-xs uppercase tracking-[0.2em] font-semibold">
+                                Step 03
+                            </p>
+
+                            <h2 class="text-3xl font-bold mt-3">
+                                Choose your store.
+                            </h2>
+
+                            <p class="text-gray-500 mt-2">
+                                Select a convenient DeviceCare location.
+                            </p>
+
+                        </div>
+
+
+                        <!-- Search -->
+
+                        <div class="mb-6">
+
+                            <input
+                                id="locationSearch"
+                                type="text"
+                                placeholder="Search city or ZIP code..."
+                                class="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 text-sm"
+                            >
+
+                        </div>
+
+
+                        <div
+                            id="locationOptions"
+                            class="grid sm:grid-cols-2 gap-4"
+                        >
+
+
+                            <button
+                                type="button"
+                                class="option-card location-option text-left border border-white/10 rounded-2xl p-5"
+                                data-location="New York"
+                                data-city="New York"
+                                data-zip="10001"
+                            >
+
+                                <span class="lime text-lg">
+                                    📍
+                                </span>
+
+                                <h3 class="font-bold mt-3">
+                                    New York
+                                </h3>
+
+                                <p class="text-gray-500 text-sm mt-1">
+                                    Midtown • NY 10001
+                                </p>
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="option-card location-option text-left border border-white/10 rounded-2xl p-5"
+                                data-location="Los Angeles"
+                                data-city="Los Angeles"
+                                data-zip="90001"
+                            >
+
+                                <span class="lime text-lg">
+                                    📍
+                                </span>
+
+                                <h3 class="font-bold mt-3">
+                                    Los Angeles
+                                </h3>
+
+                                <p class="text-gray-500 text-sm mt-1">
+                                    Downtown • CA 90001
+                                </p>
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="option-card location-option text-left border border-white/10 rounded-2xl p-5"
+                                data-location="Houston"
+                                data-city="Houston"
+                                data-zip="77001"
+                            >
+
+                                <span class="lime text-lg">
+                                    📍
+                                </span>
+
+                                <h3 class="font-bold mt-3">
+                                    Houston
+                                </h3>
+
+                                <p class="text-gray-500 text-sm mt-1">
+                                    Downtown • TX 77001
+                                </p>
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="option-card location-option text-left border border-white/10 rounded-2xl p-5"
+                                data-location="Chicago"
+                                data-city="Chicago"
+                                data-zip="60601"
+                            >
+
+                                <span class="lime text-lg">
+                                    📍
+                                </span>
+
+                                <h3 class="font-bold mt-3">
+                                    Chicago
+                                </h3>
+
+                                <p class="text-gray-500 text-sm mt-1">
+                                    Loop • IL 60601
+                                </p>
+
+                            </button>
+
+                        </div>
+
+
+                        <!-- Date & Time -->
+
+                        <div class="grid sm:grid-cols-2 gap-5 mt-8">
+
+                            <div>
+
+                                <label class="text-sm text-gray-400">
+                                    Preferred Date
+                                </label>
+
+                                <input
+                                    id="repairDate"
+                                    type="date"
+                                    class="w-full mt-2 bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 text-sm text-white"
+                                >
+
+                            </div>
+
+
+                            <div>
+
+                                <label class="text-sm text-gray-400">
+                                    Preferred Time
+                                </label>
+
+                                <select
+                                    id="repairTime"
+                                    class="w-full mt-2 bg-[#111] border border-white/10 rounded-2xl px-5 py-4 text-sm text-white"
+                                >
+
+                                    <option value="">
+                                        Select a time
+                                    </option>
+
+                                    <option value="9:00 AM">
+                                        9:00 AM
+                                    </option>
+
+                                    <option value="10:00 AM">
+                                        10:00 AM
+                                    </option>
+
+                                    <option value="11:00 AM">
+                                        11:00 AM
+                                    </option>
+
+                                    <option value="12:00 PM">
+                                        12:00 PM
+                                    </option>
+
+                                    <option value="1:00 PM">
+                                        1:00 PM
+                                    </option>
+
+                                    <option value="2:00 PM">
+                                        2:00 PM
+                                    </option>
+
+                                    <option value="3:00 PM">
+                                        3:00 PM
+                                    </option>
+
+                                    <option value="4:00 PM">
+                                        4:00 PM
+                                    </option>
+
+                                    <option value="5:00 PM">
+                                        5:00 PM
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STEP 4 -->
+
+                    <div
+                        id="step4"
+                        class="booking-step"
+                    >
+
+                        <div class="mb-8">
+
+                            <p class="lime text-xs uppercase tracking-[0.2em] font-semibold">
+                                Step 04
+                            </p>
+
+                            <h2 class="text-3xl font-bold mt-3">
+                                Your details.
+                            </h2>
+
+                            <p class="text-gray-500 mt-2">
+                                Tell us how we can reach you.
+                            </p>
+
+                        </div>
+
+
+                        <form id="bookingForm">
+
+                            <div class="grid sm:grid-cols-2 gap-5">
+
+
+                                <div>
+
+                                    <label class="text-sm text-gray-400">
+                                        Full Name
+                                    </label>
+
+                                    <input
+                                        id="customerName"
+                                        type="text"
+                                        placeholder="John Smith"
+                                        class="w-full mt-2 bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 text-sm"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div>
+
+                                    <label class="text-sm text-gray-400">
+                                        Phone Number
+                                    </label>
+
+                                    <input
+                                        id="customerPhone"
+                                        type="tel"
+                                        placeholder="(555) 123-4567"
+                                        class="w-full mt-2 bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 text-sm"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="sm:col-span-2">
+
+                                    <label class="text-sm text-gray-400">
+                                        Email Address
+                                    </label>
+
+                                    <input
+                                        id="customerEmail"
+                                        type="email"
+                                        placeholder="john@example.com"
+                                        class="w-full mt-2 bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 text-sm"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="sm:col-span-2">
+
+                                    <label class="text-sm text-gray-400">
+                                        Tell us more
+                                    </label>
+
+                                    <textarea
+                                        id="customerMessage"
+                                        rows="5"
+                                        placeholder="Describe the problem with your device..."
+                                        class="w-full mt-2 bg-white/[0.03] border border-white/10 rounded-2xl px-5 py-4 text-sm resize-none"
+                                    ></textarea>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Terms -->
+
+                            <label class="flex items-start gap-3 mt-6 cursor-pointer">
+
+                                <input
+                                    id="terms"
+                                    type="checkbox"
+                                    class="mt-1 accent-lime"
+                                    required
+                                >
+
+                                <span class="text-xs text-gray-500 leading-5">
+                                    I agree to the repair booking terms and
+                                    understand that the final repair price may
+                                    vary after device inspection.
+                                </span>
+
+                            </label>
+
+
+                            <button
+                                type="submit"
+                                class="w-full mt-7 bg-lime text-black py-4 rounded-2xl font-bold hover:bg-white transition"
+                            >
+                                Confirm Repair Booking →
+                            </button>
+
+                        </form>
+
+                    </div>
+
+
+
+                    <!-- SUCCESS -->
+
+                    <div
+                        id="successMessage"
+                        class="hidden text-center py-16"
+                    >
+
+                        <div
+                            class="w-20 h-20 rounded-full bg-lime text-black flex items-center justify-center text-4xl mx-auto"
+                        >
+                            ✓
+                        </div>
+
+                        <h2 class="text-3xl font-bold mt-7">
+                            Booking request received!
+                        </h2>
+
+                        <p class="text-gray-500 max-w-md mx-auto mt-4">
+                            Thanks for choosing DeviceCare. Our team will
+                            contact you to confirm your appointment.
+                        </p>
+
+                        <a
+                            href="index.html"
+                            class="inline-flex mt-8 border border-white/15 px-6 py-3 rounded-full font-semibold hover:border-[#d8ff3e] hover:text-[#d8ff3e] transition"
+                        >
+                            Back to Home
+                        </a>
+
+                    </div>
+
+
+
+                    <!-- NAVIGATION BUTTONS -->
+
+                    <div
+                        id="stepNavigation"
+                        class="flex justify-between gap-4 mt-10 pt-7 border-t border-white/10"
+                    >
+
+                        <button
+                            id="backBtn"
+                            type="button"
+                            class="border border-white/10 px-6 py-3 rounded-full text-sm font-semibold text-gray-400 hover:text-white hover:border-white/30 transition"
+                        >
+                            ← Back
+                        </button>
+
+                        <button
+                            id="nextBtn"
+                            type="button"
+                            class="bg-lime text-black px-7 py-3 rounded-full text-sm font-bold hover:bg-white transition"
+                        >
+                            Continue →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ================= SUMMARY ================= -->
+
+                <aside>
+
+                    <div
+                        class="summary-card border border-white/10 bg-[#0b0b0b] rounded-3xl p-6"
+                    >
+
+                        <p class="lime text-xs uppercase tracking-[0.2em] font-semibold">
+                            Your Repair
+                        </p>
+
+                        <h2 class="text-2xl font-bold mt-3">
+                            Booking Summary
+                        </h2>
+
+
+                        <div class="space-y-5 mt-8">
+
+
+                            <!-- Device -->
+
+                            <div>
+
+                                <p class="text-xs text-gray-600 uppercase tracking-wider">
+                                    Device
+                                </p>
+
+                                <p
+                                    id="summaryDevice"
+                                    class="text-sm font-semibold mt-1 text-gray-500"
+                                >
+                                    Not selected
+                                </p>
+
+                            </div>
+
+
+                            <!-- Service -->
+
+                            <div>
+
+                                <p class="text-xs text-gray-600 uppercase tracking-wider">
+                                    Repair
+                                </p>
+
+                                <p
+                                    id="summaryService"
+                                    class="text-sm font-semibold mt-1 text-gray-500"
+                                >
+                                    Not selected
+                                </p>
+
+                            </div>
+
+
+                            <!-- Location -->
+
+                            <div>
+
+                                <p class="text-xs text-gray-600 uppercase tracking-wider">
+                                    Location
+                                </p>
+
+                                <p
+                                    id="summaryLocation"
+                                    class="text-sm font-semibold mt-1 text-gray-500"
+                                >
+                                    Not selected
+                                </p>
+
+                            </div>
+
+
+                            <!-- Date -->
+
+                            <div>
+
+                                <p class="text-xs text-gray-600 uppercase tracking-wider">
+                                    Date
+                                </p>
+
+                                <p
+                                    id="summaryDate"
+                                    class="text-sm font-semibold mt-1 text-gray-500"
+                                >
+                                    Not selected
+                                </p>
+
+                            </div>
+
+
+                            <!-- Time -->
+
+                            <div>
+
+                                <p class="text-xs text-gray-600 uppercase tracking-wider">
+                                    Time
+                                </p>
+
+                                <p
+                                    id="summaryTime"
+                                    class="text-sm font-semibold mt-1 text-gray-500"
+                                >
+                                    Not selected
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="border-t border-white/10 mt-7 pt-6">
+
+                            <div class="flex items-center gap-3">
+
+                                <div
+                                    class="w-10 h-10 rounded-xl bg-[#d8ff3e]/10 flex items-center justify-center"
+                                >
+                                    🛡️
+                                </div>
+
+                                <div>
+
+                                    <p class="text-sm font-semibold">
+                                        Professional Service
+                                    </p>
+
+                                    <p class="text-xs text-gray-600 mt-1">
+                                        Quality-focused repair
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="border-t border-white/10 mt-6 pt-6">
+
+                            <p class="text-xs text-gray-600 leading-5">
+                                Final pricing depends on the device model,
+                                condition and required parts.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="border-t border-white/10 bg-[#030303]">
+
+        <div class="max-w-7xl mx-auto px-5 lg:px-8 py-12">
+
+            <div class="flex flex-col sm:flex-row justify-between gap-5">
+
+                <div>
+
+                    <div class="flex items-center gap-3">
+
+                        <div
+                            class="w-9 h-9 rounded-xl bg-lime text-black flex items-center justify-center font-bold"
+                        >
+                            D
+                        </div>
+
+                        <p class="font-bold">
+                            Device<span class="lime">Care</span>
+                        </p>
+
+                    </div>
+
+                    <p class="text-xs text-gray-600 mt-4">
+                        Professional device repair across the USA.
+                    </p>
+
+                </div>
+
+
+                <div class="flex flex-wrap gap-5 text-xs text-gray-600">
+
+                    <a href="services.html" class="hover:text-[#d8ff3e]">
+                        Services
+                    </a>
+
+                    <a href="locations.html" class="hover:text-[#d8ff3e]">
+                        Locations
+                    </a>
+
+                    <a href="contact.html" class="hover:text-[#d8ff3e]">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="border-t border-white/10 mt-10 pt-5">
+
+                <p class="text-xs text-gray-600">
+                    © 2026 DeviceCare. All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- JavaScript -->
+
+    <script src="/repair.js"></script>
+
+</body>
+</html>
